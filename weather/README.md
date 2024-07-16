@@ -26,8 +26,8 @@ This app is built using Flutter and demonstrates API integration, basic UI desig
 ## Setup and Run
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/quick_weather_app.git
-   cd quick_weather_app
+   git clone https://github.com/habiburrahmantalha/liveful-weather.git
+   cd weather
    flutter pub get
    flutter run
 
