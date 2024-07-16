@@ -1,16 +1,23 @@
-# weather
+# Weather App
 
-A new Flutter project.
+## Introduction
+The Weather App fetches and displays weather data from OpenWeatherMap based on user input (city name). 
+This app is built using Flutter and demonstrates API integration, basic UI design, and error handling.
 
-## Getting Started
+## Features
+- Search bar to input city name
+- Fetch and display current weather information:
+    - City name
+    - Temperature
+    - Weather condition
+    - Weather icon
+    - Weather forecast for next 5 days
+- Error handling for network issues and invalid city names
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Setup and Run
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/quick_weather_app.git
+   cd quick_weather_app
+   flutter pub get
+   flutter run

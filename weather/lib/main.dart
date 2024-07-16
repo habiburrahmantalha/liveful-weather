@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:weather/service/dio_city.dart';
 import 'package:weather/service/dio_weather.dart';
 
 import 'screens/home/presentation/screen_home.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
@@ -19,7 +21,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    DioCity.instance.create(  "94bb48c4e2msh3c4d5d26106cb1fp1fca77jsn632e2cea5fd6");
+    final String apiKey = dotenv.env['API_KEY_CITY'] ?? '';
+    DioCity.instance.create(  apiKey);
     DioWeather.instance.create();
     super.initState();
   }
