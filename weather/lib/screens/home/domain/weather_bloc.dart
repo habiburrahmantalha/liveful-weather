@@ -1,5 +1,6 @@
-import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/screens/home/data/model/response_forecast.dart';
 import 'package:weather/screens/home/data/model/response_weather.dart';
 import 'package:weather/screens/home/data/repository/repository_weather.dart';
@@ -25,10 +26,20 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
                  statusWeather: LoadingStatus.success,
                  weather: response,
                  currentTime: DateTime.now().millisecond));
-           }catch(error){
-             // Handles error during forecast fetch
+           }
+           // Handles error during forecast fetch
+           on DioException catch(exception){
+             printDebug("FetchWeather ${exception.response?.data}");
+             emit(state.copyWith(
+                 statusWeather: LoadingStatus.failed,
+                 errorText: exception.response?.data["message"] ?? handleDioError(exception),
+                 currentTime: DateTime.now().millisecond));
+           }
+           catch(error){
              printDebug("FetchWeather - $error");
-             emit(state.copyWith(statusWeather: LoadingStatus.failed, errorText: "", currentTime: DateTime.now().millisecond));
+             emit(state.copyWith(
+                 statusWeather: LoadingStatus.failed,
+                 errorText: "Something went wrong! Please try again", currentTime: DateTime.now().millisecond));
            }
          }
         case FetchForecast():
@@ -42,10 +53,21 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
                   statusForecast: LoadingStatus.success,
                   forecast: response?.list ?? [],
                   currentTime: DateTime.now().millisecond));
-            }catch(error){
-              // Handles error during forecast fetch
+            }
+            // Handles error during forecast fetch
+            on DioException catch(exception){
+              printDebug("FetchWeather ${exception.response?.data}");
+              emit(state.copyWith(
+                  statusForecast: LoadingStatus.failed,
+                  errorText: exception.response?.data["message"] ?? handleDioError(exception),
+                  currentTime: DateTime.now().millisecond));
+            }
+            catch(error){
               printDebug("FetchForecast - $error");
-              emit(state.copyWith(statusForecast: LoadingStatus.failed, errorText: "", currentTime: DateTime.now().millisecond));
+              emit(state.copyWith(
+                  statusForecast: LoadingStatus.failed,
+                  errorText: "Something went wrong! Please try again",
+                  currentTime: DateTime.now().millisecond));
             }
           }
       }
