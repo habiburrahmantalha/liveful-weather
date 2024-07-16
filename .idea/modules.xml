@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/weather/weather.iml" filepath="$PROJECT_DIR$/weather/weather.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weather/android/weather_android.iml" filepath="$PROJECT_DIR$/weather/android/weather_android.iml" />
     </modules>
   </component>
 </project>
