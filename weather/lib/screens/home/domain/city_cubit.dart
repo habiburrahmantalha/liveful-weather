@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/screens/home/data/model/response_city_list.dart';
@@ -9,7 +11,7 @@ class CityCubit extends Cubit<CityState> {
 
   // A token to cancel the ongoing request if needed
   CancelToken cancelToken = CancelToken();
-
+  Timer? timerAutoComplete;
   CityCubit({required this.repository}) : super(CityInitial());
 
   /// Fetches city suggestions based on the query.
@@ -40,5 +42,13 @@ class CityCubit extends Cubit<CityState> {
       // Emit error state if an exception occurs
       emit(CityError(message: 'Failed to fetch cities'));
     }
+  }
+
+  ///reducing api call
+  void onSearchTextUpdated(String query){
+    timerAutoComplete?.cancel();
+    timerAutoComplete = Timer(const Duration(seconds: 1), (){
+      fetchCitySuggestions(query);
+    });
   }
 }
