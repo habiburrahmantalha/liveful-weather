@@ -42,7 +42,7 @@ class _ScreenHomeState extends State<ScreenHome> {
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text('Liveful Weather App'),
+          title: const Text('Quick Weather App'),
         ),
         body: SingleChildScrollView(
           // Using SingleChildScrollView to enable scrolling if the content overflows

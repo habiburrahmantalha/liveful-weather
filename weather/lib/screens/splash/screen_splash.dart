@@ -37,7 +37,7 @@ class _ScreenSplashState extends State<ScreenSplash> {
             Image.asset("assets/app_icon.png", height: 128,),
             const SizedBox(height: 20),
             const Text(
-              'Liveful Weather App',
+              'Quick Weather App',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),
             ),
             const SizedBox(height: 16,),

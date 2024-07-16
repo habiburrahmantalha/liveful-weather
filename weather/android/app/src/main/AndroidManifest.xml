@@ -7,7 +7,7 @@
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
-            android:label="Weather"
+            android:label="Quick Weather App"
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
