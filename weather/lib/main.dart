@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:weather/screens/splash/screen_splash.dart';
 import 'package:weather/service/dio_city.dart';
 import 'package:weather/service/dio_weather.dart';
 
@@ -51,7 +52,7 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ScreenHome(),
+      home: const ScreenSplash(),
     );
   }
 }
