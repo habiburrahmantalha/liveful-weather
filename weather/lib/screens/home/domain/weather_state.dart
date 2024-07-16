@@ -1,6 +1,6 @@
 part of 'weather_bloc.dart';
 
-
+/// Enum defining the various loading states.
 enum LoadingStatus {
   initial,
   loading,
@@ -12,6 +12,7 @@ enum LoadingStatus {
   bool get isSuccess => this == LoadingStatus.success;
 }
 
+/// Class representing the state of the weather feature in the application.
 class WeatherState extends Equatable {
   final ResponseWeather? weather;
   final List<WeatherData>? forecast;

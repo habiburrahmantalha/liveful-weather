@@ -16,6 +16,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     on<WeatherEvent>((event, emit) async {
       switch(event){
         case FetchWeather():
+        // Emits loading state and fetches current weather
          if(true){
            emit(state.copyWith(statusWeather: LoadingStatus.loading));
            try{
@@ -25,11 +26,13 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
                  weather: response,
                  currentTime: DateTime.now().millisecond));
            }catch(error){
-             printDebug("GetOrderDetails - $error");
+             // Handles error during forecast fetch
+             printDebug("FetchWeather - $error");
              emit(state.copyWith(statusWeather: LoadingStatus.failed, errorText: "", currentTime: DateTime.now().millisecond));
            }
          }
         case FetchForecast():
+        // Emits loading state and fetches weather forecast
           if(true){
             emit(state.copyWith(statusForecast: LoadingStatus.loading));
             try{
@@ -40,7 +43,8 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
                   forecast: response?.list ?? [],
                   currentTime: DateTime.now().millisecond));
             }catch(error){
-              printDebug("GetOrderDetails - $error");
+              // Handles error during forecast fetch
+              printDebug("FetchForecast - $error");
               emit(state.copyWith(statusForecast: LoadingStatus.failed, errorText: "", currentTime: DateTime.now().millisecond));
             }
           }
